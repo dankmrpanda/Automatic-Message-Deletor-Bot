@@ -49,6 +49,7 @@ client.on('messageCreate', async(message) =>{
             setTimeout(function() {
                 message.delete()
                 .then(e => {
+                    console.log(message.content);
                     console.log("message deleted");
                 })
                 .catch(error => {
