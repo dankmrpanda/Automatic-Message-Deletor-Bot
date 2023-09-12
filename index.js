@@ -1,7 +1,6 @@
 const fs = require('fs');
 require('dotenv').config();
 const {Client, GatewayIntentBits} = require('discord.js');
-const { setMaxIdleHTTPParsers } = require('http');
 
 const client = new Client(
 {
@@ -39,6 +38,33 @@ client.on('ready', (c) => {
         userId[guild.id] = setOwner;
     })
     console.log("bot online");
+})
+//joined a server
+client.on("guildCreate", guild => {
+    var setOn = "on";
+    var setTime = "2000";
+    var setOwner = guild.ownerId;
+    var setTxt = guild.name + "\n" + guild.id + "\n" + "on\n" + "2000\n" + setOwner + "\n\n";
+    fs.appendFile("serverSettings.txt", setTxt, (err) => {if (err) throw err;});
+    on[guild.id] = setOn; 
+    time[guild.id] = setTime;
+    userId[guild.id] = setOwner;
+    console.log("Joined a new guild: " + guild.name);
+})
+
+//removed from a server
+client.on("guildDelete", guild => {
+    fs.readFile("serverSettings.txt", function(err, data) {
+        if(err) throw err;
+        var array = data.toString().split("\n");
+        array.splice(array.indexOf(guild.guildId), 6);
+        delete on[guild.id]; 
+        delete time[guild.id];
+        delete userId[guild.id];
+        const stringa = array.join('\n');
+        fs.writeFile("serverSettings.txt", stringa , (err) => {if (err) throw err;});
+    });
+    console.log("Left a guild: " + guild.name)
 })
 
 client.on('messageCreate', async(message) =>{
