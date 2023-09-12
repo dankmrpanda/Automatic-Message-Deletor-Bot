@@ -46,7 +46,21 @@ client.on('messageCreate', async(message) =>{
         if(message.author.id == userId[message.guild.id]){
             const stopTime = parseInt(time[message.guild.id]);
             console.log(stopTime);
-            setTimeout(function() {
+            if (stopTime != 0)
+            {
+                setTimeout(function() {
+                    message.delete()
+                    .then(e => {
+                        console.log(message.content);
+                        console.log("message deleted");
+                    })
+                    .catch(error => {
+                        console.log("message was already deleted");
+                    })
+                }, stopTime);
+            }
+            else
+            {
                 message.delete()
                 .then(e => {
                     console.log(message.content);
@@ -55,7 +69,7 @@ client.on('messageCreate', async(message) =>{
                 .catch(error => {
                     console.log("message was already deleted");
                 })
-            }, stopTime);
+            }
         }
     }
 })
