@@ -45,6 +45,7 @@ client.on('messageCreate', async(message) =>{
     if (on[message.guild.id] == "on"){
         if(message.author.id == userId[message.guild.id]){
             const stopTime = parseInt(time[message.guild.id]);
+            console.log(stopTime);
             setTimeout(function() {
                 message.delete()
                 .then(e => {
