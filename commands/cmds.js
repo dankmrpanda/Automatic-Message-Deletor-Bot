@@ -43,16 +43,16 @@ const commands = [
     ],
     default_member_permissions: PermissionFlagsBits.Administrator.toString(),
   },
-  {
-    name: 'status',
-    description: 'Replies with current status of bot',
-    default_member_permissions: PermissionFlagsBits.Administrator.toString(),
-  },
-  {
-    name: 'time',
-    description: 'Replies with current time set for message deletes',
-    default_member_permissions: PermissionFlagsBits.Administrator.toString(),
-  },
+  // {
+  //   name: 'status',
+  //   description: 'Replies with current status of bot',
+  //   default_member_permissions: PermissionFlagsBits.Administrator.toString(),
+  // },
+  // {
+  //   name: 'time',
+  //   description: 'Replies with current time set for message deletes',
+  //   default_member_permissions: PermissionFlagsBits.Administrator.toString(),
+  // },
   {
     name: 'set-user',
     description: 'Sets the user whose messages will be deleted',
@@ -66,11 +66,11 @@ const commands = [
     ],
     default_member_permissions: PermissionFlagsBits.Administrator.toString(),
   },
-  {
-    name: 'user',
-    description: 'Replies with current user whose messages are deleted',
-    default_member_permissions: PermissionFlagsBits.Administrator.toString(),
-  },
+  // {
+  //   name: 'user',
+  //   description: 'Replies with current user whose messages are deleted',
+  //   default_member_permissions: PermissionFlagsBits.Administrator.toString(),
+  // },
   {
     name: 'settings',
     description: 'Shows the bot\' current configs/settings.',

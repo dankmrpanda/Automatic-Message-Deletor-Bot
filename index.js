@@ -131,18 +131,18 @@ client.on('interactionCreate', (interaction) => {
         });
         console.log(interaction.guild.name + "'s bot wait time for message deletes are now " + timeSet);
     }
-    if (interaction.commandName === 'status') {
-        console.log("called status cmd");
-        const status = on[interaction.guildId];
-        console.log(status);
-        interaction.reply("The bot is " + status);
-    }
-    if (interaction.commandName === 'time') {
-        console.log("called time cmd");
-        const timeSet = time[interaction.guildId];
-        console.log(timeSet);
-        interaction.reply("The current time between message deletes is " + timeSet + " milliseconds");
-    }
+    // if (interaction.commandName === 'status') {
+    //     console.log("called status cmd");
+    //     const status = on[interaction.guildId];
+    //     console.log(status);
+    //     interaction.reply("The bot is " + status);
+    // }
+    // if (interaction.commandName === 'time') {
+    //     console.log("called time cmd");
+    //     const timeSet = time[interaction.guildId];
+    //     console.log(timeSet);
+    //     interaction.reply("The current time between message deletes is " + timeSet + " milliseconds");
+    // }
     if (interaction.commandName === 'set-user') {  
         const user = interaction.options.get('user').value;
 
@@ -157,12 +157,12 @@ client.on('interactionCreate', (interaction) => {
         });
         console.log(interaction.guild.name + `'s message delete user is now ${client.users.cache.get(user)}`);
     }
-    if (interaction.commandName === 'user') {
-        console.log("called user cmd");
-        const user = userId[interaction.guildId];
-        console.log(`<@${user}>`);
-        interaction.reply(`The current time user for message delete is <@${user}>`);
-    }
+    // if (interaction.commandName === 'user') {
+    //     console.log("called user cmd");
+    //     const user = userId[interaction.guildId];
+    //     console.log(`<@${user}>`);
+    //     interaction.reply(`The current time user for message delete is <@${user}>`);
+    // }
     if (interaction.commandName === 'settings') {
         console.log("called settings cmd");
         const user = userId[interaction.guildId];
