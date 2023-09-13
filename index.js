@@ -1,7 +1,6 @@
 const fs = require('fs');
 require('dotenv').config();
 const {Client, GatewayIntentBits, EmbedBuilder} = require('discord.js');
-const { time } = require('console');
 
 const client = new Client(
 {
