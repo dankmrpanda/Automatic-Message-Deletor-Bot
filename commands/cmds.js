@@ -71,7 +71,13 @@ const commands = [
     description: 'Replies with current user whose messages are deleted',
     default_member_permissions: PermissionFlagsBits.Administrator.toString(),
   },
+  {
+    name: 'settings',
+    description: 'Shows the bot\' current configs/settings.',
+    default_member_permissions: PermissionFlagsBits.Administrator.toString(),
+  },
 ];
+
 
 
 const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);

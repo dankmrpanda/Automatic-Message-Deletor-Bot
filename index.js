@@ -1,6 +1,7 @@
 const fs = require('fs');
 require('dotenv').config();
-const {Client, GatewayIntentBits} = require('discord.js');
+const {Client, GatewayIntentBits, EmbedBuilder} = require('discord.js');
+const { time } = require('console');
 
 const client = new Client(
 {
@@ -162,6 +163,21 @@ client.on('interactionCreate', (interaction) => {
         const user = userId[interaction.guildId];
         console.log(`<@${user}>`);
         interaction.reply(`The current time user for message delete is <@${user}>`);
+    }
+    if (interaction.commandName === 'settings') {
+        console.log("called settings cmd");
+        const user = userId[interaction.guildId];
+        const settime = time[interaction.guildId];
+        const toggle = on[interaction.guildId];
+        const embed = new EmbedBuilder()
+        embed.setTitle("Bot Configurations");
+        embed.addFields(
+            { name: "Status", value: toggle},
+            { name: "User", value: `<@${user}>`},
+            { name: "Time", value: settime + "ms"}
+        )
+        
+        interaction.reply({embeds: [embed]});
     }
 });
 
