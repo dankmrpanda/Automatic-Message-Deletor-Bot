@@ -19,7 +19,7 @@ client.on('ready', (c) => {
     (client.guilds.cache).forEach((guild) => { //checks each server the bot is in
         var setOn = "on";
         var setTime = "2000";
-        var setOwner = guild.ownerId;
+        var setOwner = "0";
         var setTxt = guild.name + "\n" + guild.id + "\n" + "on\n" + "2000\n" + setOwner + "\n\n";
         for (let i = 0; i < array.length; i++) 
         {
@@ -43,7 +43,7 @@ client.on('ready', (c) => {
 client.on("guildCreate", guild => {
     var setOn = "on";
     var setTime = "2000";
-    var setOwner = guild.ownerId;
+    var setOwner = "0";
     var setTxt = guild.name + "\n" + guild.id + "\n" + "on\n" + "2000\n" + setOwner + "\n\n";
     fs.appendFile("serverSettings.txt", setTxt, (err) => {if (err) throw err;});
     on[guild.id] = setOn; 
@@ -68,7 +68,7 @@ client.on("guildDelete", guild => {
 })
 
 client.on('messageCreate', async(message) =>{
-    if (on[message.guild.id] == "on"){
+    if (on[message.guild.id] == "on" && userId[message.guild.id] != "0"){
         if(message.author.id == userId[message.guild.id]){
             const stopTime = parseInt(time[message.guild.id]);
             console.log(stopTime);
