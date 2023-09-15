@@ -171,8 +171,20 @@ client.on('interactionCreate', (interaction) => {
         const embed = new EmbedBuilder()
         embed.setTitle("Bot Configurations");
         embed.addFields(
-            { name: "Status", value: toggle},
-            { name: "User", value: `<@${user}>`},
+            { name: "Status", value: toggle}
+        )
+        if (user == "0")
+        {
+            embed.addFields(
+                { name: "User", value: "no user set"},
+            )
+        }
+        else{
+            embed.addFields(
+                { name: "User", value: `<@${user}>`},
+            )
+        }
+        embed.addFields(
             { name: "Time", value: settime + "ms"}
         )
         
