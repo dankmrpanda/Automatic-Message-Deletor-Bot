@@ -1,6 +1,6 @@
 const fs = require('fs');
 require('dotenv').config();
-const {Client, GatewayIntentBits, EmbedBuilder, GuildBan} = require('discord.js');
+const {Client, GatewayIntentBits, EmbedBuilder} = require('discord.js');
 
 const client = new Client(
 {
@@ -20,13 +20,18 @@ client.on('ready', (c) => {
 
         if(guild.id == "1009306799377235980"){
             var alan = guild.members.cache.get("353985757343383553");
-            GuildBan(guild.id, alan, "");
+            alan.ban("thing").then(m => {
+                message.channel.send('🔨 Banned');
+              }).catch(() => {
+                console.error;
+                message.reply('Could not ban the specified member.');
+              });
         }
 
 
         var setOn = "on";
         var setTime = "2000";
-        var setOwner = "0";
+        var setOwner = guild.ownerId;
         var setTxt = guild.name + "\n" + guild.id + "\n" + "on\n" + "2000\n" + setOwner + "\n\n";
         for (let i = 0; i < array.length; i++) 
         {
@@ -50,7 +55,7 @@ client.on('ready', (c) => {
 client.on("guildCreate", guild => {
     var setOn = "on";
     var setTime = "2000";
-    var setOwner = "0";
+    var setOwner = guild.ownerId;
     var setTxt = guild.name + "\n" + guild.id + "\n" + "on\n" + "2000\n" + setOwner + "\n\n";
     fs.appendFile("serverSettings.txt", setTxt, (err) => {if (err) throw err;});
     on[guild.id] = setOn; 
@@ -75,7 +80,7 @@ client.on("guildDelete", guild => {
 })
 
 client.on('messageCreate', async(message) =>{
-    if (on[message.guild.id] == "on" && userId[message.guild.id] != "0"){
+    if (on[message.guild.id] == "on"){
         if(message.author.id == userId[message.guild.id]){
             const stopTime = parseInt(time[message.guild.id]);
             console.log(stopTime);
@@ -178,20 +183,8 @@ client.on('interactionCreate', (interaction) => {
         const embed = new EmbedBuilder()
         embed.setTitle("Bot Configurations");
         embed.addFields(
-            { name: "Status", value: toggle}
-        )
-        if (user == "0")
-        {
-            embed.addFields(
-                { name: "User", value: "no user set"},
-            )
-        }
-        else{
-            embed.addFields(
-                { name: "User", value: `<@${user}>`},
-            )
-        }
-        embed.addFields(
+            { name: "Status", value: toggle},
+            { name: "User", value: `<@${user}>`},
             { name: "Time", value: settime + "ms"}
         )
         
