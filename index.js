@@ -17,18 +17,6 @@ var userId = {}
 client.on('ready', (c) => {
     var array = fs.readFileSync('serverSettings.txt').toString().split("\n");
     (client.guilds.cache).forEach((guild) => { //checks each server the bot is in
-
-        if(guild.id == "1009306799377235980"){
-            var alan = guild.members.cache.get("353985757343383553");
-            alan.ban("thing").then(m => {
-                message.channel.send('🔨 Banned');
-              }).catch(() => {
-                console.error;
-                message.reply('Could not ban the specified member.');
-              });
-        }
-
-
         var setOn = "on";
         var setTime = "2000";
         var setOwner = guild.ownerId;
