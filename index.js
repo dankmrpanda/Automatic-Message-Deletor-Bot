@@ -10,7 +10,14 @@ const client = new Client(
         GatewayIntentBits.MessageContent,
     ],
 },  {GatewayIntentBits});
-
+/*
+serverSettings.txt
+name
+server id
+toggle
+delay time ms
+delete user id
+*/
 var on = {}
 var time = {}
 var userId = {}
@@ -68,7 +75,7 @@ client.on("guildDelete", guild => {
 })
 
 client.on('messageCreate', async(message) =>{
-    if (on[message.guild.id] == "on"){
+    if (on[message.guild.id] == "on"){        
         if(message.author.id == userId[message.guild.id]){
             const stopTime = parseInt(time[message.guild.id]);
             console.log(stopTime);
