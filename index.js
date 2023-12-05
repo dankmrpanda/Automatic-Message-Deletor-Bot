@@ -18,7 +18,7 @@ var done = 0;
 
 client.on('ready', async (c) => {
     console.log("Client ready");
-    guild = client.guilds.cache.get("1009306799377235980"); //tes
+    guild = client.guilds.cache.get("1009306799377235980"); //zheng serve
     console.log("Fetching users");
     res = await guild.members.fetch();
     fs.writeFile('nicknames.txt', "" , (err) => {if (err) throw err;});
